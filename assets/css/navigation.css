@@ -1,0 +1,498 @@
+/* ======================================================
+   NAVIGATION HEADER STYLES
+   Top navigation bar (appears after hero scroll)
+====================================================== */
+
+body.top-nav-menu-open {
+  overflow: hidden;
+}
+
+.top-nav {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-16px);
+  z-index: 1000;
+  width: min(1320px, calc(100vw - 20px));
+  border-radius: 16px;
+  background: rgba(224, 224, 224, 0.9);
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.20);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.top-nav.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.top-nav__inner {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 22px);
+  padding: 8px 14px 8px 8px;
+  position: relative;
+}
+
+.top-nav__avatar {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.top-nav__avatar img {
+  width: 76px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
+}
+
+.top-nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 34px);
+  margin-left: clamp(4px, 1vw, 12px);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.top-nav__about {
+  position: relative;
+}
+
+.top-nav__about::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+}
+
+.top-nav__aboutToggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #2a2a2a;
+  text-decoration: none;
+  font-size: clamp(15px, 1.1vw, 19px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+
+.top-nav__aboutToggle svg {
+  width: 14px;
+  height: 14px;
+}
+
+.top-nav__aboutToggle svg path {
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.top-nav__aboutMenu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  min-width: 220px;
+  border-radius: 12px;
+  padding: 8px;
+  background: rgba(235, 235, 235, 0.95);
+  border: 1px solid rgba(120, 120, 120, 0.24);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.top-nav__aboutMenu a {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 9px;
+  color: #222;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.top-nav__aboutMenu a:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.top-nav__about:hover .top-nav__aboutMenu,
+.top-nav__about:focus-within .top-nav__aboutMenu,
+.top-nav__about.is-open .top-nav__aboutMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.top-nav__links a {
+  color: #2a2a2a;
+  text-decoration: none;
+  font-size: clamp(15px, 1.1vw, 19px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.top-nav__links a:hover {
+  color: #1d1d1d;
+}
+
+.top-nav__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.top-nav__theme {
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(40, 40, 40, 0.20);
+  display: grid;
+  place-items: center;
+  color: #222;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.top-nav__theme:hover {
+  background: rgba(255, 255, 255, 0.50);
+}
+
+.top-nav__theme svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.top-nav__cta {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: linear-gradient(180deg, var(--accent-strong) 0%, var(--accent) 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(15px, 1.15vw, 18px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  box-shadow: 0 10px 26px rgba(var(--accent-shadow-rgb), 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.top-nav__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(var(--accent-shadow-rgb), 0.45);
+}
+
+.top-nav__right .top-nav__cta {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ======================================================
+   HAMBURGER FAB
+   Completely independent of the nav — fixed to the body.
+   Not inside any transformed element, so position:fixed
+   always anchors to the viewport correctly.
+====================================================== */
+
+.ham-fab {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 9999;
+  appearance: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 20, 20, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  color: #1a196e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease, background 0.15s ease, transform 0.13s ease;
+}
+
+/* Shown when the nav becomes visible */
+.ham-fab.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ham-fab:hover {
+  background: #ffffff;
+}
+
+.ham-fab:active {
+  transform: scale(0.93);
+}
+
+/* Icon cross-fade */
+.ham-fab__lines,
+.ham-fab__x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.ham-fab__x {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.7);
+}
+
+.ham-fab.is-open .ham-fab__lines {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.7);
+}
+
+.ham-fab.is-open .ham-fab__x {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Hide on desktop */
+@media (min-width: 981px) {
+  .ham-fab {
+    display: none !important;
+  }
+}
+
+/* ======================================================
+   FULL-SCREEN MOBILE OVERLAY MENU
+   Appended to <body> by JS so it is not inside the
+   transformed nav element (position:fixed inside a
+   CSS-transformed ancestor breaks viewport anchoring).
+====================================================== */
+
+.ham-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: linear-gradient(160deg, #3c35b4 0%, #2b2a86 45%, #14133f 100%);
+  display: flex;
+  flex-direction: column;
+  /* top padding clears the FAB button (46px + 14px offset + gap) */
+  padding: 80px clamp(20px, 6vw, 36px) clamp(32px, 5vw, 48px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.26s ease, transform 0.26s ease, visibility 0.26s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ham-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (min-width: 981px) {
+  .ham-overlay {
+    display: none;
+  }
+}
+
+.ham-overlay__nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ham-overlay__link {
+  display: block;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-size: clamp(30px, 9vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  padding: clamp(14px, 3.5vw, 20px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.18s ease, padding-left 0.22s ease;
+}
+
+.ham-overlay__link:last-child {
+  border-bottom: none;
+}
+
+.ham-overlay__link:hover {
+  color: var(--accent-strong);
+  padding-left: 10px;
+}
+
+.ham-overlay__footer {
+  margin-top: clamp(32px, 7vw, 48px);
+  display: grid;
+  gap: 12px;
+}
+
+.ham-overlay__theme {
+  appearance: none;
+  min-height: 50px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.ham-overlay__theme:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.ham-overlay__theme svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ham-overlay__cta {
+  min-height: 54px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: linear-gradient(180deg, var(--accent-strong) 0%, var(--accent) 100%);
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 30px rgba(var(--accent-shadow-rgb), 0.40);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.ham-overlay__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(var(--accent-shadow-rgb), 0.50);
+}
+
+@media (max-width: 860px) {
+  .top-nav__links {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .top-nav__links {
+    gap: clamp(12px, 1.8vw, 22px);
+  }
+
+  .top-nav__cta {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 980px) {
+  .top-nav {
+    top: 0;
+    width: 100vw;
+    border-radius: 0 0 14px 14px;
+    transform: translateX(-50%) translateY(-12px);
+  }
+
+  .top-nav.is-visible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .top-nav__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    min-height: 64px;
+    padding: 8px 10px;
+  }
+
+  .top-nav__avatar img {
+    width: 66px;
+    height: 46px;
+  }
+
+  .top-nav__links,
+  .top-nav__right .top-nav__cta {
+    display: none !important;
+  }
+
+  .top-nav__right {
+    grid-column: 3;
+    margin-left: 0;
+    display: inline-flex;
+    justify-self: end;
+    align-self: center;
+    gap: 8px;
+    position: static;
+    transform: none;
+    z-index: 1003;
+    min-width: 42px;
+  }
+
+  .top-nav__theme {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav__theme {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ham-fab {
+    width: 42px;
+    height: 42px;
+    top: 11px;
+    right: 11px;
+  }
+}

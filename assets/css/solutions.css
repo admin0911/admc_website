@@ -1,0 +1,369 @@
+﻿/* ======================================================
+   SOLUTIONS SECTION STYLES
+   Solutions grid + showcase staggered cards
+====================================================== */
+
+.solutions {
+  padding: clamp(36px, 5vw, 64px) 0;
+}
+
+.solutions__wrap {
+  /* Match services width for aligned content edges */
+  width: min(1280px, 92vw);
+  margin: 0 auto;
+  padding: 0 clamp(18px, 3vw, 40px);
+}
+
+/* Slight upward overlap on wider screens to create a smoother flow */
+@media (min-width: 900px) {
+  .solutions__wrap {
+    margin-top: -20px;
+  }
+
+  .why2__wrap {
+    margin-top: -16px;
+  }
+}
+
+.solutions__pill {
+  position: relative;
+  border-radius: var(--sol-radius);
+  border: 1px solid var(--sol-border);
+  background:
+    radial-gradient(1200px 320px at 50% 0%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0.10));
+  box-shadow: var(--sol-shadow);
+  padding: clamp(26px, 3.4vw, 44px);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.solutions__pill::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 92px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.solutions__header {
+  text-align: center;
+  margin-bottom: clamp(18px, 2.8vw, 34px);
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(32px);
+  will-change: transform, opacity;
+}
+
+.solutions__header.is-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.solutions__title {
+  margin: 0;
+  font-size: clamp(24px, 3.1vw, 38px);
+  line-height: 1.12;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: -0.03em;
+}
+
+.solutions__subtitle {
+  margin: 12px auto 0;
+  max-width: 72ch;
+  font-size: clamp(14px, 1.55vw, 18px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2.4vw, 28px);
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(14px, 2.2vw, 22px);
+}
+
+@media (max-width: 900px) {
+  .solutions__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Center lone last card when count is odd */
+  .solutions__grid > .solution-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .solutions__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.solution-card {
+  text-align: center;
+  border-radius: var(--sol-card-radius);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  padding: clamp(16px, 2.1vw, 22px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  transition: transform 180ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  will-change: transform, opacity, box-shadow;
+}
+
+.solution-card.is-animated {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.solution-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 54px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.solution-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: var(--sol-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.solution-card__icon {
+  width: var(--sol-icon-size);
+  height: var(--sol-icon-size);
+  margin: 0 auto 12px;
+  color: rgba(255, 255, 255, 0.92);
+  transform: translateY(0);
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), color 220ms ease;
+}
+
+.solution-card:hover .solution-card__icon {
+  color: rgba(255, 255, 255, 1);
+  transform: translateY(-4px) scale(1.1);
+}
+
+.solution-card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.solution-card__icon svg path,
+.solution-card__icon svg circle,
+.solution-card__icon svg line {
+  vector-effect: non-scaling-stroke;
+  stroke: currentColor;
+  stroke-width: var(--sol-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.solution-card__title {
+  margin: 0;
+  font-size: clamp(16px, 1.75vw, 22px);
+  line-height: 1.22;
+  font-weight: 850;
+  color: rgba(255, 255, 255, 0.92);
+  position: relative;
+  z-index: 1;
+}
+
+.solution-card__text {
+  margin: 10px auto 0;
+  max-width: 40ch;
+  font-size: clamp(13px, 1.3vw, 16px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.70);
+  position: relative;
+  z-index: 1;
+}
+
+/* 7 tiles: last row has 1 tile centered (desktop only) */
+@media (min-width: 901px) {
+  .solution-card--center {
+    grid-column: 2;
+  }
+}
+
+/* ======================================================
+   SOLUTIONS SHOWCASE (Staggered Cards)
+====================================================== */
+
+.solutions-showcase {
+  padding: clamp(56px, 6.5vw, 110px) 0;
+  position: relative;
+}
+
+.showcase-heading {
+  width: min(1280px, 92vw);
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+  margin-bottom: clamp(48px, 7vw, 80px);
+}
+
+.showcase-heading h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: transform, opacity;
+}
+
+.showcase-heading h2.is-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.showcase-grid {
+  width: min(1280px, 92vw);
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(24px, 3vw, 36px);
+}
+
+@media (max-width: 900px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Center lone last card when count is odd */
+  .showcase-grid > .showcase-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 901px) {
+  .showcase-card--center {
+    grid-column: 2;
+  }
+}
+
+.showcase-card {
+  position: relative;
+  padding: clamp(28px, 3.5vw, 40px);
+  border-radius: var(--sol-card-radius);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
+  opacity: 0;
+  transform: translateY(48px) scale(0.94);
+  will-change: transform, opacity, box-shadow;
+  overflow: hidden;
+}
+
+.showcase-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 64px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.showcase-card.is-animated {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.showcase-card:hover {
+  transform: translateY(-16px) scale(1.02);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+}
+
+.showcase-card-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.94);
+  transform: translateY(0);
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), color 220ms ease;
+}
+
+.showcase-card:hover .showcase-card-icon {
+  transform: translateY(-6px) scale(1.15);
+  color: rgba(255, 255, 255, 1);
+}
+
+.showcase-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.showcase-card-icon svg path,
+.showcase-card-icon svg circle,
+.showcase-card-icon svg line {
+  vector-effect: non-scaling-stroke;
+  stroke: currentColor;
+  stroke-width: var(--sol-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.showcase-card-title {
+  margin: 0 0 10px;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.94);
+  position: relative;
+  z-index: 1;
+}
+
+.showcase-card-text {
+  margin: 0;
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68);
+  position: relative;
+  z-index: 1;
+}
+
+.showcase-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.showcase-card-link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 4px;
+}

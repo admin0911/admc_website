@@ -1,0 +1,12 @@
+# Claude Code internals
+.claude/
+
+# Backup and working files
+backups/
+REFACTOR_SUMMARY.txt
+Solutions_backup.txt
+
+# Unrelated files
+iot_gesture_dataset.zip
+timeline-highres.png
+timeline-highres-full.png

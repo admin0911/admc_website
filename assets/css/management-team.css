@@ -1,0 +1,492 @@
+/* ======================================================
+   MANAGEMENT TEAM PAGE
+====================================================== */
+
+/* Prevent the GSAP x:120 initial state from creating
+   horizontal scroll at the viewport level */
+html:has(body.management-page) {
+  overflow-x: hidden;
+}
+
+.management-page {
+  position: relative;
+  overflow-x: clip;
+  min-height: 100dvh;
+  background:
+    radial-gradient(1200px 620px at 10% 10%, rgba(255, 255, 255, 0.1), transparent 60%),
+    radial-gradient(1100px 560px at 90% 22%, rgba(255, 255, 255, 0.08), transparent 62%),
+    linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 44%, var(--bg3) 100%);
+}
+
+.management-page::before,
+.management-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.management-page::before {
+  z-index: -2;
+  background:
+    radial-gradient(860px 420px at 16% 20%, rgba(120, 176, 255, 0.12), rgba(120, 176, 255, 0) 68%),
+    radial-gradient(920px 500px at 84% 48%, rgba(152, 131, 255, 0.1), rgba(152, 131, 255, 0) 70%),
+    radial-gradient(760px 360px at 50% 86%, rgba(102, 164, 255, 0.08), rgba(102, 164, 255, 0) 74%);
+}
+
+.management-page::after {
+  z-index: -1;
+  background:
+    linear-gradient(112deg, rgba(140, 160, 255, 0.05), rgba(140, 160, 255, 0) 36%),
+    linear-gradient(-112deg, rgba(166, 138, 255, 0.05), rgba(166, 138, 255, 0) 36%);
+}
+
+.management-page main,
+.management-page footer {
+  position: relative;
+  z-index: 1;
+}
+
+.mg-wrap {
+  width: min(1240px, 92vw);
+  margin: 0 auto;
+}
+
+.mg-kicker {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mg-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(88px, 9vw, 130px) 0 clamp(54px, 6vw, 80px);
+}
+
+.mg-hero__shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mg-hero__shape--one {
+  width: clamp(280px, 30vw, 480px);
+  height: clamp(280px, 30vw, 480px);
+  right: -8%;
+  top: 5%;
+  background: radial-gradient(circle, rgba(95, 147, 255, 0.34), rgba(95, 147, 255, 0) 64%);
+}
+
+.mg-hero__shape--two {
+  width: clamp(220px, 24vw, 380px);
+  height: clamp(220px, 24vw, 380px);
+  left: -6%;
+  bottom: -10%;
+  background: radial-gradient(circle, rgba(133, 117, 255, 0.28), rgba(133, 117, 255, 0) 68%);
+}
+
+.mg-hero__title {
+  margin: 0 auto;
+  font-size: clamp(46px, 7vw, 102px);
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+  max-width: 12ch;
+  text-align: center;
+}
+
+.mg-hero__lead {
+  margin: 20px auto 0;
+  max-width: 82ch;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(16px, 1.16vw, 20px);
+  line-height: 1.64;
+  text-align: justify;
+  text-align-last: center;
+}
+
+.mg-mission,
+.mg-values,
+.mg-messages,
+.mg-strengths {
+  padding: 0 0 clamp(34px, 4vw, 54px);
+}
+
+/* Clip GSAP translateX overflow so off-screen initial
+   states don't create horizontal scroll on mobile */
+.mg-messages {
+  overflow-x: clip;
+}
+
+.mg-head h2 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.mg-head p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(15px, 1.02vw, 18px);
+}
+
+.mg-mission__grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mg-missionCard {
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    radial-gradient(460px 160px at 18% 0%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 62%),
+    rgba(255, 255, 255, 0.07);
+}
+
+.mg-missionCard h3 {
+  margin: 0;
+  font-size: clamp(26px, 2.5vw, 42px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.mg-missionCard p {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.mg-values__line {
+  background: linear-gradient(90deg, var(--accent), rgba(255, 255, 255, 0.35));
+}
+
+.mg-values__head {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mg-values .section-label {
+  margin-bottom: 14px;
+}
+
+.mg-values .section-label__text {
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.22em;
+}
+
+.mg-values__head h2 {
+  margin: 0;
+  font-size: clamp(36px, 4.5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.mg-values__head p {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(15px, 1.06vw, 19px);
+}
+
+.mg-ideaHeight {
+  margin-top: 18px;
+  min-height: auto;
+}
+
+.mg-ideaSticky {
+  position: relative;
+}
+
+.mg-ideaTrack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.mg-ideaItem {
+  position: relative;
+  min-height: 260px;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    radial-gradient(420px 180px at 20% 0%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%),
+    rgba(255, 255, 255, 0.07);
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.22);
+  opacity: 0.001;
+  visibility: hidden;
+}
+
+.mg-ideaItem--one {
+  background:
+    radial-gradient(420px 180px at 20% 0%, rgba(219, 193, 255, 0.28), rgba(255, 255, 255, 0) 60%),
+    rgba(211, 195, 238, 0.2);
+}
+
+.mg-ideaItem--two {
+  background:
+    radial-gradient(420px 180px at 20% 0%, rgba(255, 202, 255, 0.26), rgba(255, 255, 255, 0) 60%),
+    rgba(233, 201, 234, 0.2);
+}
+
+.mg-ideaItem--three {
+  background:
+    radial-gradient(420px 180px at 20% 0%, rgba(239, 246, 156, 0.28), rgba(255, 255, 255, 0) 60%),
+    rgba(224, 230, 170, 0.24);
+}
+
+.mg-ideaItem__number {
+  margin: 0;
+  font-size: clamp(28px, 2.2vw, 38px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.mg-ideaItem__body {
+  margin-top: 62px;
+}
+
+.mg-ideaItem__title {
+  margin: 0;
+  font-size: clamp(30px, 3vw, 46px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.mg-ideaItem__text {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.52;
+  font-size: clamp(15px, 1.02vw, 18px);
+}
+
+.mg-message {
+  display: grid;
+  grid-template-columns: 0.94fr 1.4fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+
+.mg-message--reverse {
+  grid-template-columns: 1.4fr 0.94fr;
+}
+
+.mg-message__media {
+  min-height: 420px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    radial-gradient(420px 220px at 28% 0%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 62%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+}
+
+.mg-message__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(260px 260px at 50% 34%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, rgba(255, 255, 255, 0) 1px 34px);
+}
+
+.mg-message__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.mg-message__media span {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  bottom: 18px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(var(--accent-shadow-rgb), 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.mg-message__media--ceo {
+  background:
+    radial-gradient(460px 240px at 50% 12%, rgba(168, 166, 255, 0.34), rgba(168, 166, 255, 0) 70%),
+    linear-gradient(170deg, #3e417f 0%, #1d214b 100%);
+}
+
+.mg-message__media--gm {
+  background:
+    radial-gradient(460px 240px at 50% 12%, rgba(102, 177, 255, 0.32), rgba(102, 177, 255, 0) 70%),
+    linear-gradient(170deg, #2f5a8d 0%, #1c3555 100%);
+}
+
+.mg-message__card {
+  border-radius: 22px;
+  padding: clamp(22px, 2.2vw, 34px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    radial-gradient(620px 220px at 12% 0%, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 58%),
+    rgba(255, 255, 255, 0.07);
+}
+
+.mg-message__card p {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.62;
+  text-align: justify;
+}
+
+.mg-message__card h4 {
+  margin: 18px 0 4px;
+  font-size: clamp(28px, 2.7vw, 42px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.mg-message__role {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.mg-strengths__list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mg-strengths__list li {
+  border-radius: 16px;
+  padding: 20px 22px;
+  border: 1px solid rgba(var(--accent-shadow-rgb), 0.56);
+  background:
+    radial-gradient(520px 170px at 14% 0%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 64%),
+    linear-gradient(180deg, rgba(78, 74, 165, 0.56), rgba(56, 53, 128, 0.54));
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+}
+
+.mg-strengths__list li h4 {
+  margin: 0;
+  font-size: clamp(29px, 2.3vw, 40px);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.mg-strengths__list li p {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(15px, 1.02vw, 18px);
+  line-height: 1.5;
+}
+
+.mg-strengths__list li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--accent-shadow-rgb), 0.5);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.3);
+}
+
+/* Alternate dark-card style for other sections, excluding strengths */
+.mg-missionCard,
+.mg-message__card {
+  border-left: 3px solid var(--accent);
+  border: 1px solid rgba(var(--accent-shadow-rgb), 0.35);
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    #0e1025;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.26);
+}
+
+.mg-missionCard:hover,
+.mg-message__card:hover {
+  transform: translateY(-4px);
+  border-left-color: var(--accent-strong);
+  border-color: rgba(var(--accent-shadow-rgb), 0.52);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.32);
+}
+
+@media (max-width: 1100px) {
+  .mg-strengths__list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mg-message,
+  .mg-message--reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .mg-mission__grid,
+  .mg-strengths__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Center lone last item in 2-col layouts */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .mg-strengths__list > :last-child:nth-child(odd),
+  .mg-mission__grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .mg-ideaHeight {
+    min-height: auto;
+  }
+
+  .mg-ideaSticky {
+    position: static;
+  }
+
+  .mg-ideaTrack {
+    gap: 12px;
+  }
+
+  .mg-hero {
+    padding-top: 112px;
+  }
+}
+
+
+.mg-highlight {
+  color: #f5c77a;
+}
+
+html.is-inverted .management-page .mg-highlight {
+  color: #f5c77a;
+}

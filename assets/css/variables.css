@@ -1,0 +1,53 @@
+/* ======================================================
+   GLOBAL CSS VARIABLES
+   Used across all pages for consistent theming
+====================================================== */
+
+:root {
+  /* Background Colors */
+  --bg1: #3c35b4;
+  --bg2: #2b2a86;
+  --bg3: #14133f;
+
+  /* Text Colors */
+  --text: rgba(255, 255, 255, 0.92);
+  --textDim: rgba(255, 255, 255, 0.72);
+
+  /* Card Colors */
+  --card: rgba(255, 255, 255, 0.92);
+  --cardText: #141414;
+  --muted: #5d5d5d;
+
+  /* Accent */
+  --accent: #b88a2f;
+  --accent-strong: #d2a24a;
+  --accent-soft: rgba(184, 138, 47, 0.18);
+  --accent-shadow-rgb: 184, 138, 47;
+
+  /* Border Radius */
+  --radius: 28px;
+
+  /* Shadows */
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+
+  /* Layout Ratios */
+  --peek-ratio: 0.50;
+  --card-gap: 34px;
+
+  /* Solutions Card Variables */
+  --sol-border: rgba(255, 255, 255, 0.14);
+  --sol-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+  --sol-shadow-hover: 0 30px 110px rgba(0, 0, 0, 0.26);
+  --sol-radius: 28px;
+  --sol-card-radius: 18px;
+  --sol-icon-size: 44px;
+  --sol-stroke: 1.8;
+}
+
+/* Keep accent visually consistent under global invert mode */
+html.is-inverted {
+  --accent: #4775d0;
+  --accent-strong: #2d5db5;
+  --accent-soft: rgba(71, 117, 208, 0.18);
+  --accent-shadow-rgb: 71, 117, 208;
+}

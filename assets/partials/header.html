@@ -1,0 +1,35 @@
+<header class="top-nav" data-top-nav>
+  <div class="top-nav__inner">
+    <a class="top-nav__avatar" data-nav-home aria-label="ADMC Home">
+      <img data-nav-logo src="" alt="ADMC" />
+    </a>
+
+    <nav class="top-nav__links" aria-label="Primary">
+      <div class="top-nav__about">
+        <button class="top-nav__aboutToggle" type="button" aria-haspopup="true" aria-expanded="false">
+          ABOUT
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 7.5 10 12.5 15 7.5" />
+          </svg>
+        </button>
+        <div class="top-nav__aboutMenu" role="menu" aria-label="About pages">
+          <a data-nav-company role="menuitem">Company Overview</a>
+          <a data-nav-management role="menuitem">ADMC Management Team</a>
+        </div>
+      </div>
+      <a data-nav-solutions>SOLUTIONS</a>
+      <a data-nav-vendors>VENDORS</a>
+      <a data-nav-clients>CLIENTS</a>
+    </nav>
+
+    <div class="top-nav__right">
+      <button class="top-nav__theme" type="button" data-theme-toggle aria-label="Toggle light and dark mode" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7" />
+          <path d="M12 2v2.8M12 19.2V22M4.9 4.9l2 2M17.1 17.1l2 2M2 12h2.8M19.2 12H22M4.9 19.1l2-2M17.1 6.9l2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+      </button>
+      <a class="top-nav__cta" data-nav-contact>CONTACT</a>
+    </div>
+  </div>
+</header>

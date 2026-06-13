@@ -1,0 +1,137 @@
+/* ======================================================
+   VENDORS MARQUEE SECTION
+   Animated vendor logos carousel
+====================================================== */
+
+.vendors {
+  background: transparent;
+  color: var(--text);
+  padding: clamp(56px, 7vw, 96px) 0 clamp(66px, 7vw, 110px);
+}
+
+.vendors__wrap {
+  width: min(1280px, 92vw);
+  margin: 0 auto;
+}
+
+.vendors__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.vendors__labelLine {
+  width: 72px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), rgba(255, 255, 255, 0.35));
+}
+
+.vendors__title {
+  margin: 0;
+  font-size: clamp(30px, 4.2vw, 72px);
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+  max-width: 20ch;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.vendors__marquee {
+  margin-top: clamp(24px, 4vw, 42px);
+  overflow: hidden;
+  padding-inline: clamp(8px, 1.4vw, 18px);
+}
+
+.vendors__track {
+  display: flex;
+  gap: clamp(16px, 1.8vw, 24px);
+  width: max-content;
+  animation: vendors-scroll 40s linear infinite;
+}
+
+.vendors__marquee:hover .vendors__track {
+  animation-play-state: paused;
+}
+
+@keyframes vendors-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.vendor-card {
+  width: clamp(220px, 19vw, 280px);
+  flex: 0 0 auto;
+  text-decoration: none;
+  color: inherit;
+}
+
+.vendor-card__tile {
+  height: clamp(160px, 14vw, 220px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.90);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.vendor-card:hover .vendor-card__tile {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+  border-color: rgba(255, 255, 255, 0.30);
+}
+
+.vendor-card__tile img {
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  max-height: 92px;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+.vendor-card__tile img[src*="supermicro"] {
+  max-width: 88%;
+  max-height: 110px;
+}
+
+@media (max-width: 680px) {
+  .vendor-card__tile img {
+    max-height: 78px;
+  }
+}
+
+.vendor-card__name {
+  margin: 14px 2px 0;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.vendor-card__desc {
+  margin: 4px 2px 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vendors__track {
+    animation: none;
+  }
+}

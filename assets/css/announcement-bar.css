@@ -1,0 +1,140 @@
+/* ======================================================
+   ANNOUNCEMENT BAR
+   Dismissible top strip — Dubai office news
+====================================================== */
+
+.ann-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #0e0d2e;
+  border-bottom: 1px solid rgba(184, 138, 47, 0.40);
+  padding: 0 52px 0 16px;
+  transform: translateY(0);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.ann-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(184, 138, 47, 0.06) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.ann-bar.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* Pulsing dot */
+.ann-bar__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d2a24a;
+  flex-shrink: 0;
+  animation: ann-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes ann-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(210, 162, 74, 0.55);
+  }
+  50% {
+    opacity: 0.82;
+    box-shadow: 0 0 0 7px rgba(210, 162, 74, 0);
+  }
+}
+
+.ann-bar__text {
+  font-size: clamp(11px, 1.15vw, 13.5px);
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.ann-bar__link {
+  color: #d2a24a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(11px, 1.15vw, 13.5px);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.ann-bar__link:hover {
+  color: #f0c06a;
+  opacity: 0.92;
+}
+
+.ann-bar__dismiss {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.ann-bar__dismiss:hover {
+  color: rgba(255, 255, 255, 0.90);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+/* ── CSS variable for bar height ─────────────────────── */
+/* Consumed by nav and FAB to offset their top positions */
+
+:root {
+  --ann-h: 48px;
+}
+
+html.ann-dismissed {
+  --ann-h: 0px;
+}
+
+/* Offset the nav and FAB when bar is visible */
+.top-nav {
+  top: calc(var(--ann-h, 0px) + 10px) !important;
+}
+
+.ham-fab {
+  top: calc(var(--ann-h, 0px) + 14px) !important;
+}
+
+
+@media (max-width: 560px) {
+  :root {
+    --ann-h: 44px;
+  }
+
+  .ann-bar {
+    height: 44px;
+    gap: 7px;
+    padding: 0 44px 0 10px;
+  }
+
+  .ann-bar__text {
+    font-size: 11px;
+  }
+}

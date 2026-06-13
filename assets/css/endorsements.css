@@ -1,0 +1,277 @@
+/* ======================================================
+   ENDORSEMENTS SECTION
+   Card strip inspired by editorial testimonial layouts
+====================================================== */
+
+.endorsements {
+  background: transparent;
+  color: var(--text);
+  padding: clamp(56px, 6vw, 86px) 0 clamp(54px, 5vw, 80px);
+}
+
+.endorsements__wrap {
+  width: min(1280px, 94vw);
+  margin: 0 auto;
+}
+
+.endorsements__header {
+  margin: 0 auto clamp(18px, 2.4vw, 26px);
+}
+
+.endorsements__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.endorsements__labelLine {
+  width: 72px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), rgba(255, 255, 255, 0.35));
+}
+
+.endorsements__title {
+  margin: 0;
+  font-size: clamp(32px, 4.4vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.endorsements__controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(18px, 2vw, 30px);
+  margin-bottom: clamp(18px, 2.3vw, 26px);
+}
+
+.endorsements__arrow {
+  width: clamp(56px, 5.2vw, 68px);
+  height: clamp(48px, 4.3vw, 56px);
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, opacity 150ms ease;
+}
+
+.endorsements__arrow svg {
+  width: 34px;
+  height: 34px;
+}
+
+.endorsements__arrow svg path {
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.endorsements__arrow:hover {
+  background: var(--accent-soft);
+  border-color: rgba(var(--accent-shadow-rgb), 0.5);
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.endorsements__arrow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.endorsements__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.endorsements__dot {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+.endorsements__dot:hover {
+  transform: scale(1.06);
+}
+
+.endorsements__dot[aria-selected="true"] {
+  background: var(--accent);
+}
+
+.endorsements__viewport {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.endorsements__track {
+  display: flex;
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.endorsement-card {
+  position: relative;
+  min-height: clamp(360px, 38vw, 520px);
+  width: 100%;
+  flex: 0 0 100%;
+  border-radius: 0;
+  overflow: hidden;
+  padding: clamp(24px, 2.2vw, 34px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.endorsement-card--left {
+  background:
+    radial-gradient(900px 220px at 15% 0%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 65%),
+    rgba(79, 142, 174, 0.28);
+}
+
+.endorsement-card--center {
+  background:
+    radial-gradient(900px 220px at 15% 0%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0) 65%),
+    rgba(92, 167, 113, 0.24);
+}
+
+.endorsement-card--right {
+  background:
+    radial-gradient(900px 220px at 15% 0%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 65%),
+    rgba(79, 142, 174, 0.28);
+}
+
+.endorsement-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.endorsement-card__icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.endorsement-card__icon svg path,
+.endorsement-card__icon svg circle {
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.endorsement-card__kicker {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.endorsement-card__headline {
+  margin: clamp(14px, 1.3vw, 16px) 0 14px;
+  font-size: clamp(28px, 3.2vw, 58px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  text-transform: uppercase;
+  max-width: 16ch;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.endorsement-card__copy {
+  margin: 0;
+  font-size: clamp(15px, 1.08vw, 22px);
+  line-height: 1.3;
+  max-width: 70ch;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.endorsement-card__meta {
+  margin: clamp(18px, 2vw, 24px) 0 0;
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (max-width: 1100px) {
+  .endorsements__controls {
+    gap: 18px;
+  }
+
+  .endorsement-card {
+    min-height: clamp(330px, 52vw, 440px);
+  }
+
+  .endorsement-card__headline {
+    max-width: 18ch;
+  }
+}
+
+@media (max-width: 680px) {
+  .endorsements {
+    padding-top: 48px;
+  }
+
+  .endorsements__controls {
+    gap: 12px;
+    justify-content: space-between;
+  }
+
+  .endorsements__dots {
+    gap: 10px;
+  }
+
+  .endorsements__dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .endorsement-card {
+    min-height: 340px;
+    padding: 22px;
+  }
+
+  .endorsement-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+
+  .endorsement-card__headline {
+    font-size: clamp(22px, 8.4vw, 36px);
+  }
+
+  .endorsement-card__copy {
+    font-size: 15px;
+    max-width: 30ch;
+  }
+}

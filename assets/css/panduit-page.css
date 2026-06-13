@@ -1,0 +1,907 @@
+.panduit-page {
+  --panduit-bg-primary: #2e2b8f;
+  --panduit-bg-secondary: #4b3fc4;
+  --panduit-accent-soft: rgba(245, 199, 122, 0.16);
+  position: relative;
+  overflow-x: clip;
+  background:
+    radial-gradient(980px 520px at 12% 10%, rgba(255, 255, 255, 0.09), transparent 58%),
+    radial-gradient(860px 520px at 90% 18%, rgba(255, 255, 255, 0.07), transparent 62%),
+    linear-gradient(135deg, var(--panduit-bg-primary), var(--panduit-bg-secondary));
+  color: #f7f8fb;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.panduit-page::before,
+.panduit-page::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.panduit-page::before {
+  width: clamp(220px, 25vw, 420px);
+  height: clamp(220px, 25vw, 420px);
+  top: clamp(90px, 14vh, 150px);
+  right: clamp(-120px, -9vw, -50px);
+  background:
+    radial-gradient(circle at 40% 40%, var(--panduit-accent-soft), rgba(184, 138, 47, 0) 72%);
+  filter: blur(0.5px);
+  animation: panduit-bg-float 18s ease-in-out infinite alternate;
+}
+
+.panduit-page::after {
+  width: clamp(220px, 24vw, 410px);
+  height: clamp(220px, 24vw, 410px);
+  bottom: clamp(80px, 11vh, 150px);
+  left: clamp(-130px, -10vw, -60px);
+  background: radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 74%);
+  opacity: 1;
+}
+
+.panduit-main {
+  width: min(1180px, 92vw);
+  margin: 0 auto;
+  padding-top: clamp(88px, 9vw, 118px);
+}
+
+.panduit-hero {
+  padding-bottom: clamp(20px, 3vw, 32px);
+}
+
+.panduit-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 440px) minmax(320px, 1fr);
+  gap: clamp(20px, 3.2vw, 46px);
+  align-items: center;
+}
+
+.panduit-hero__media {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.34);
+  background: #0f1a44;
+  min-height: 280px;
+  position: relative;
+}
+
+.panduit-hero__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.panduit-hero__media--logo {
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  padding: 24px;
+  animation: panduit-card-drift 7.5s ease-in-out infinite;
+}
+
+.panduit-hero__media--logoDark {
+  background: linear-gradient(180deg, rgba(18, 24, 54, 0.96), rgba(10, 14, 34, 0.98));
+}
+
+.panduit-hero__media--logo img {
+  min-height: 0;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.panduit-hero__media--logo img[src*="supermicro"] {
+  max-width: 92%;
+  max-height: 248px;
+}
+
+.panduit-hero__media--logo::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -38% -20%;
+  height: 44%;
+  background: radial-gradient(closest-side, rgba(184, 138, 47, 0.28), rgba(184, 138, 47, 0));
+  pointer-events: none;
+}
+
+.panduit-hero__meta {
+  margin: 0 0 12px;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.panduit-hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.35rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+}
+
+.panduit-hero__content > p {
+  margin: 14px 0 0;
+  max-width: 56ch;
+  color: rgba(248, 249, 253, 0.84);
+  line-height: 1.6;
+}
+
+.panduit-content {
+  color: #111827;
+  padding-bottom: clamp(42px, 7vw, 72px);
+}
+
+.panduit-content__inner {
+  background: #eef1f6;
+  border-radius: 16px;
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
+.panduit-highlight {
+  margin-bottom: clamp(22px, 3vw, 30px);
+  border-radius: 18px;
+  padding: clamp(18px, 3vw, 26px);
+  color: #f8fbff;
+  background:
+    linear-gradient(120deg, rgba(9, 18, 54, 0.94), rgba(15, 47, 127, 0.84)),
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 52%);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
+  overflow: hidden;
+  position: relative;
+}
+
+.panduit-highlight::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), rgba(255, 255, 255, 0.35));
+}
+
+.panduit-highlight__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.panduit-highlight__label::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.panduit-highlight__body {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.panduit-highlight__eyebrow {
+  margin: 0 0 10px;
+  color: rgba(255, 255, 255, 0.72);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.panduit-highlight h2 {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  line-height: 1.06;
+  color: #ffffff;
+}
+
+.panduit-highlight p:last-child {
+  margin: 12px 0 0;
+  max-width: 66ch;
+  color: rgba(248, 249, 253, 0.82);
+  line-height: 1.62;
+}
+
+.panduit-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(230px, 310px);
+  gap: clamp(20px, 3.2vw, 40px);
+}
+
+.panduit-pillRow {
+  display: inline-flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.panduit-pill {
+  border: 1px solid #c8cfdd;
+  background: #f9fbff;
+  color: #2a3756;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.panduit-pill.is-active {
+  background: #0f2f7f;
+  border-color: #0f2f7f;
+  color: #ffffff;
+}
+
+.panduit-overview h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.9vw, 2.15rem);
+  line-height: 1.14;
+  color: #08173d;
+}
+
+.panduit-overview h3 {
+  margin: 28px 0 12px;
+  font-size: clamp(1.16rem, 2vw, 1.36rem);
+  color: #0b225f;
+}
+
+.panduit-overview > p {
+  margin: 12px 0 0;
+  color: #42506a;
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+.panduit-inlineMedia {
+  margin: 18px 0 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #cfd6e3;
+  box-shadow: 0 12px 28px rgba(10, 24, 54, 0.1);
+}
+
+.panduit-inlineMedia img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.panduit-benefits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.panduit-benefits li {
+  position: relative;
+  padding-left: 20px;
+  color: #2f3d58;
+  line-height: 1.55;
+}
+
+.panduit-benefits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.panduit-accordion {
+  border: 1px solid #c8cfdd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafe;
+}
+
+.panduit-accItem + .panduit-accItem {
+  border-top: 1px solid #cfd5e2;
+}
+
+.panduit-accItem summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 44px 14px 16px;
+  position: relative;
+  font-weight: 600;
+  color: #112047;
+}
+
+.panduit-accItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.panduit-accItem summary::after {
+  content: "+";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.15rem;
+  color: #0f2f7f;
+  transition: transform 220ms ease;
+}
+
+.panduit-accItem[open] summary::after {
+  content: "-";
+}
+
+.panduit-accItem p {
+  margin: 0;
+  padding: 0 16px 14px;
+  color: #44536f;
+  line-height: 1.58;
+}
+
+.panduit-sidebar {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.panduit-infoCard,
+.panduit-contactCard {
+  background: #fcfdff;
+  border: 1px solid #cfd6e3;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 9px 24px rgba(10, 24, 54, 0.08);
+}
+
+.panduit-infoCard__label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.68rem;
+  color: #5c6781;
+}
+
+.panduit-infoCard h3 {
+  margin: 10px 0 0;
+  color: #0b225f;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.panduit-stats {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.panduit-stats li {
+  display: grid;
+  gap: 4px;
+}
+
+.panduit-stats span {
+  color: #5d6780;
+  font-size: 0.82rem;
+}
+
+.panduit-stats strong {
+  color: #0f1f45;
+  font-size: 0.92rem;
+}
+
+.panduit-contactCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panduit-contactCard img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  background: #ffffff;
+  border: 1px solid #dce2ec;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.panduit-contactCard img[src*="supermicro"] {
+  width: 72px;
+  height: 72px;
+  padding: 7px;
+}
+
+.panduit-contactCard p {
+  margin: 0;
+  color: #5f6983;
+  font-size: 0.8rem;
+}
+
+.panduit-contactCard strong {
+  color: #12254f;
+  font-size: 0.94rem;
+}
+
+.panduit-storyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.panduit-storyCard {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #cfd6e3;
+  background: #fcfdff;
+  box-shadow: 0 9px 24px rgba(10, 24, 54, 0.08);
+}
+
+.panduit-storyCard img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.panduit-storyCard__body {
+  padding: 16px;
+}
+
+.panduit-storyCard__body h3 {
+  margin: 0;
+  color: #0b225f;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.panduit-storyCard__body p {
+  margin: 10px 0 0;
+  color: #44536f;
+  line-height: 1.58;
+}
+
+html.is-inverted .panduit-hero__media--logo {
+  background: #ffffff;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.is-inverted .panduit-hero__media--logo img {
+  filter: none !important;
+}
+
+html.is-inverted .panduit-contactCard img {
+  background: #ffffff;
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+.panduit-ctaRow {
+  margin-top: clamp(24px, 3vw, 32px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.panduit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 11px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.panduit-btn:hover {
+  transform: translateY(-1px);
+}
+
+.panduit-btn--primary {
+  background: var(--accent);
+  color: #131313;
+  box-shadow: 0 12px 24px rgba(184, 138, 47, 0.26);
+}
+
+.panduit-btn--primary:hover {
+  background: var(--accent-strong);
+}
+
+.panduit-btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.panduit-btn--primary::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -34%;
+  width: 42%;
+  height: 300%;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0));
+  transform: rotate(16deg);
+  animation: panduit-btn-sheen 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.panduit-btn--dark {
+  margin-top: 14px;
+  background: #0d1f4f;
+  color: #ffffff;
+}
+
+.panduit-btn--ghost {
+  background: #ffffff;
+  border-color: #c6cfdd;
+  color: #19316b;
+}
+
+[data-reveal] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 780ms cubic-bezier(0.22, 1, 0.36, 1), transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal].is-reveal-pending {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+}
+
+[data-reveal='left'].is-reveal-pending {
+  transform: translate3d(-24px, 0, 0);
+}
+
+[data-reveal='right'].is-reveal-pending {
+  transform: translate3d(24px, 0, 0);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes panduit-bg-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(1.2%, -1%, 0) scale(1.03);
+  }
+}
+
+@keyframes panduit-card-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes panduit-btn-sheen {
+  0%,
+  64% {
+    left: -34%;
+  }
+  100% {
+    left: 132%;
+  }
+}
+
+/* ── Certification sections ───────────────────────────── */
+.panduit-certSection {
+  margin-top: clamp(36px, 5vw, 56px);
+  padding-top: clamp(28px, 4vw, 40px);
+  border-top: 1px solid #d0d7e6;
+}
+
+.panduit-sectionHead {
+  margin-bottom: clamp(22px, 3vw, 32px);
+}
+
+.panduit-sectionLabel {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #0f2f7f;
+  margin-bottom: 10px;
+}
+
+.panduit-sectionHead h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  color: #08173d;
+  line-height: 1.14;
+}
+
+.panduit-sectionHead > p {
+  margin: 0;
+  max-width: 72ch;
+  color: #42506a;
+  line-height: 1.65;
+}
+
+/* Tier cards grid */
+.panduit-tierGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.panduit-tierCard {
+  background: #fcfdff;
+  border: 1px solid #cfd6e3;
+  border-radius: 14px;
+  padding: 20px 18px;
+  box-shadow: 0 6px 18px rgba(10, 24, 54, 0.07);
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.panduit-tierCard--featured {
+  background: linear-gradient(160deg, #f0f5ff, #e8effe);
+  border-color: #b4c3e8;
+}
+
+.panduit-tierCard__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #0f2f7f;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.panduit-tierCard__badge--gold {
+  background: linear-gradient(90deg, #9a6c00, #c49620);
+}
+
+.panduit-tierCard h3 {
+  margin: 0;
+  font-size: 0.97rem;
+  color: #08173d;
+  line-height: 1.25;
+}
+
+.panduit-tierCard__stat {
+  display: grid;
+  gap: 2px;
+}
+
+.panduit-tierCard__stat span {
+  font-size: 0.72rem;
+  color: #5d6780;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.panduit-tierCard__stat strong {
+  font-size: 1.08rem;
+  color: #0b225f;
+  font-weight: 700;
+}
+
+.panduit-tierCard > p {
+  margin: 0;
+  font-size: 0.83rem;
+  color: #44536f;
+  line-height: 1.58;
+}
+
+/* Credential cards grid */
+.panduit-credGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.panduit-credCard {
+  background: #fcfdff;
+  border: 1px solid #cfd6e3;
+  border-radius: 14px;
+  padding: 22px 20px;
+  box-shadow: 0 6px 18px rgba(10, 24, 54, 0.07);
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.panduit-credCard--featured {
+  background: linear-gradient(160deg, #f0f5ff, #e8effe);
+  border-color: #b4c3e8;
+}
+
+.panduit-credCard__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.panduit-credCard__abbr {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: #0f2f7f;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.panduit-credCard__level {
+  margin: 0 0 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0f2f7f;
+}
+
+.panduit-credCard__header h3 {
+  margin: 0;
+  font-size: 0.97rem;
+  color: #08173d;
+  line-height: 1.25;
+}
+
+.panduit-credCard__desc {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #44536f;
+  line-height: 1.6;
+}
+
+.panduit-credCard__topics {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 7px;
+}
+
+.panduit-credCard__topics li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.82rem;
+  color: #2f3d58;
+  line-height: 1.45;
+}
+
+.panduit-credCard__topics li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* Shared note block */
+.panduit-certNote {
+  margin-top: 18px;
+  padding: 16px 18px;
+  background: #f0f4fb;
+  border-left: 3px solid #0f2f7f;
+  border-radius: 0 10px 10px 0;
+}
+
+.panduit-certNote strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+  color: #08173d;
+}
+
+.panduit-certNote p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #44536f;
+  line-height: 1.6;
+}
+
+@media (max-width: 980px) {
+  .panduit-tierGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panduit-credGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .panduit-tierGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .panduit-hero__inner,
+  .panduit-grid,
+  .panduit-storyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .panduit-highlight__body {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .panduit-hero h1 {
+    max-width: 18ch;
+  }
+
+  .panduit-hero__media,
+  .panduit-hero__media img {
+    min-height: 220px;
+    max-width: 100%;
+  }
+
+  .panduit-sidebar {
+    order: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .panduit-main {
+    width: min(1200px, 94vw);
+  }
+
+  .panduit-content__inner {
+    padding: 20px 16px;
+  }
+
+  .panduit-btn {
+    width: 100%;
+  }
+
+  .panduit-ctaRow {
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panduit-page::before,
+  .panduit-hero__media--logo,
+  .panduit-btn--primary::after {
+    animation: none;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

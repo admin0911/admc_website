@@ -437,10 +437,15 @@ body.top-nav-menu-open {
 
 @media (max-width: 980px) {
   .top-nav {
-    top: 0;
+    /* Flush to top of viewport (announcement bar pushes it via --ann-h in its own CSS) */
+    top: var(--ann-h, 0px) !important;
     width: 100vw;
     border-radius: 0 0 14px 14px;
     transform: translateX(-50%);
+    /* Fully opaque so page content never bleeds through on mobile */
+    background: rgb(230, 230, 230);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .top-nav.is-visible {

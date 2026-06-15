@@ -170,3 +170,16 @@ html.is-inverted .vendor-card__tile img {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* ======================================================
+   MOBILE NAV CLEARANCE
+   Inner pages (body has a class) need padding-top on
+   mobile to keep content below the fixed nav bar.
+   Uses --ann-h (set by announcement-bar.css) so it
+   auto-adjusts when the bar is dismissed.
+====================================================== */
+@media (max-width: 980px) {
+  body[class] {
+    padding-top: calc(var(--ann-h, 0px) + 68px);
+  }
+}

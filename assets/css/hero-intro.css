@@ -185,6 +185,9 @@
   cursor: default;
   user-select: none;
   contain: layout style paint;
+  /* Start invisible — GSAP takes ownership immediately on load */
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 180px)) scale(0.68);
 }
 
 .hi-card__img {

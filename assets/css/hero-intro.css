@@ -1,0 +1,262 @@
+/* ======================================================
+   HERO INTRO — CARD ORBIT ANIMATION
+   Full-screen cinematic intro, cards orbit before merging
+   into the pill.
+====================================================== */
+
+#hero-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Dark ambient background ─────────────────────────── */
+.hi-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 75% at 50% 45%, rgba(55, 40, 160, 0.60), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 80% 20%, rgba(20, 60, 140, 0.30), transparent 55%),
+    linear-gradient(160deg, #06071a 0%, #0d0e2c 55%, #060819 100%);
+  z-index: 0;
+}
+
+/* ── Ambient glowing orbs ────────────────────────────── */
+.hi-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.hi-orb--1 {
+  width: clamp(280px, 40vw, 520px);
+  height: clamp(280px, 40vw, 520px);
+  top: -10%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(80, 50, 220, 0.22) 0%, transparent 65%);
+  animation: hi-orb-drift 12s ease-in-out infinite;
+}
+
+.hi-orb--2 {
+  width: clamp(200px, 30vw, 400px);
+  height: clamp(200px, 30vw, 400px);
+  bottom: -5%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(30, 100, 200, 0.20) 0%, transparent 65%);
+  animation: hi-orb-drift 9s ease-in-out infinite reverse;
+  animation-delay: -3s;
+}
+
+.hi-orb--3 {
+  width: clamp(150px, 22vw, 300px);
+  height: clamp(150px, 22vw, 300px);
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(100, 60, 200, 0.15) 0%, transparent 65%);
+  animation: hi-orb-pulse 6s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes hi-orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(4%, 3%) scale(1.06); }
+  66%       { transform: translate(-3%, 5%) scale(0.96); }
+}
+
+@keyframes hi-orb-pulse {
+  0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+  50%       { opacity: 1;   transform: translateY(-50%) scale(1.15); }
+}
+
+/* ── Floating particles ──────────────────────────────── */
+.hi-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hi-p {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: rgba(180, 160, 255, 0.55);
+  animation: hi-particle-float linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Stagger 12 particles with different sizes, positions, durations */
+.hi-p:nth-child(1)  { width:3px;  height:3px;  left:8%;  top:70%; animation-duration:14s; animation-delay:0s; }
+.hi-p:nth-child(2)  { width:2px;  height:2px;  left:18%; top:40%; animation-duration:11s; animation-delay:-3s; }
+.hi-p:nth-child(3)  { width:4px;  height:4px;  left:28%; top:85%; animation-duration:16s; animation-delay:-6s; }
+.hi-p:nth-child(4)  { width:2px;  height:2px;  left:42%; top:20%; animation-duration:13s; animation-delay:-1s; }
+.hi-p:nth-child(5)  { width:3px;  height:3px;  left:55%; top:65%; animation-duration:15s; animation-delay:-8s; }
+.hi-p:nth-child(6)  { width:2px;  height:2px;  left:65%; top:30%; animation-duration:10s; animation-delay:-4s; }
+.hi-p:nth-child(7)  { width:4px;  height:4px;  left:72%; top:80%; animation-duration:17s; animation-delay:-2s; }
+.hi-p:nth-child(8)  { width:2px;  height:2px;  left:80%; top:50%; animation-duration:12s; animation-delay:-7s; }
+.hi-p:nth-child(9)  { width:3px;  height:3px;  left:88%; top:15%; animation-duration:14s; animation-delay:-5s; }
+.hi-p:nth-child(10) { width:2px;  height:2px;  left:93%; top:70%; animation-duration:11s; animation-delay:-9s; }
+.hi-p:nth-child(11) { width:3px;  height:3px;  left:35%; top:55%; animation-duration:18s; animation-delay:-11s; background: rgba(120, 200, 255, 0.45); }
+.hi-p:nth-child(12) { width:2px;  height:2px;  left:50%; top:90%; animation-duration:13s; animation-delay:-6s; background: rgba(200, 160, 255, 0.50); }
+
+@keyframes hi-particle-float {
+  0%   { transform: translateY(0)    rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-65vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── Top bar: label + skip ───────────────────────────── */
+.hi-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(18px, 3vh, 28px) clamp(20px, 4vw, 44px);
+}
+
+.hi-topbar__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.hi-skip {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.hi-skip:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+/* ── Arena: the centred stage where cards live ────────── */
+.hi-arena {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  contain: layout style;
+}
+
+/* ── Individual solution cards ───────────────────────── */
+.hi-card {
+  position: absolute;
+  /* GSAP uses xPercent/yPercent -50 to anchor centre */
+  left: 50%;
+  top: 50%;
+  width: clamp(165px, 24vw, 240px);
+  height: clamp(220px, 32vw, 320px);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 72px rgba(0, 0, 0, 0.60),
+    0 8px 24px rgba(0, 0, 0, 0.40),
+    0 0 0 1px rgba(255, 255, 255, 0.10) inset;
+  will-change: transform, opacity;
+  cursor: default;
+  user-select: none;
+  contain: layout style paint;
+}
+
+.hi-card__img {
+  width: 100%;
+  height: 63%;
+  background-size: cover;
+  background-position: center;
+  transition: none;
+}
+
+.hi-card__body {
+  height: 37%;
+  background: linear-gradient(160deg, #1a1d48 0%, #0f1132 100%);
+  padding: clamp(10px, 1.5vw, 18px) clamp(12px, 1.7vw, 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hi-card__kicker {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(180, 160, 255, 0.60);
+  margin: 0;
+}
+
+.hi-card__name {
+  font-size: clamp(13px, 1.5vw, 18px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* ── Card counter bottom-right ───────────────────────── */
+.hi-counter {
+  position: absolute;
+  bottom: clamp(22px, 3.5vh, 36px);
+  right: clamp(20px, 4vw, 44px);
+  z-index: 3;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.28);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Mobile tweaks ───────────────────────────────────── */
+@media (max-width: 480px) {
+  .hi-card {
+    width: 148px;
+    height: 198px;
+    border-radius: 18px;
+  }
+
+  .hi-card__name {
+    font-size: 13px;
+  }
+
+  /* Fewer particles on mobile to save paint */
+  .hi-p:nth-child(n+9) { display: none; }
+}
+
+@media (max-width: 380px) {
+  .hi-card {
+    width: 132px;
+    height: 176px;
+    border-radius: 16px;
+  }
+}

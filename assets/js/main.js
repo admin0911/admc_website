@@ -116,6 +116,15 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
   /* ======== HERO ANIMATIONS ======== */
   function initHeroAnimations() {
+    // If the card intro overlay is present, defer until it signals done
+    if (document.getElementById('hero-intro')) {
+      document.addEventListener('admc:intro-done', runHeroTimeline, { once: true });
+    } else {
+      runHeroTimeline();
+    }
+  }
+
+  function runHeroTimeline() {
     const hero = document.querySelector("[data-animate='hero-reveal']");
     const stage = hero?.querySelector(".hero-stage");
     const pill = hero?.querySelector("[data-pill]");
@@ -134,7 +143,7 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       }
 
       // Auto-playing timeline — fluid, overlapping sequence
-      const tlHero = gsap.timeline({ delay: 0.2 });
+      const tlHero = gsap.timeline({ delay: 0.1 });
 
       // Words fly out immediately
       tlHero.to(left, { x: "-18vw", opacity: 0, ease: "power3.out", duration: 0.6 }, 0);
@@ -166,45 +175,20 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         0.44
       );
 
-      // Tagline slides in (overlaps the end of logo reveal)
+      // Tagline slides in
       tlHero.to(tagline, { opacity: 1, y: 0, ease: "power3.out", duration: 0.6 }, 1.46);
 
-      // On complete: reveal scroll hint AND show header without requiring scroll
       tlHero.eventCallback("onComplete", () => {
         if (scrollHint) {
           gsap.to(scrollHint, { autoAlpha: 1, duration: 0.38, ease: "power2.out" });
-        }
-        const topNav = document.querySelector("[data-top-nav]");
-        if (topNav && !topNav.classList.contains("is-visible")) {
-          topNav.classList.add("is-visible");
-          gsap.to(topNav, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power2.out", overwrite: true });
         }
       });
     }
   }
 
   function initHeaderAnimation() {
-    const hero = document.querySelector("[data-animate='hero-reveal']");
-    const topNav = document.querySelector("[data-top-nav]");
-
-    if (hero && topNav) {
-      if (topNav.dataset.headerAnimBound === "1") return;
-      topNav.dataset.headerAnimBound = "1";
-      ScrollTrigger.create({
-        trigger: hero,
-        start: "bottom top",
-        onEnter: () => {
-          if (!topNav.classList.contains("is-visible")) {
-            topNav.classList.add("is-visible");
-            gsap.to(topNav, { y: 0, autoAlpha: 1, duration: 0.32, ease: "power2.out", overwrite: true });
-          }
-        },
-        onLeaveBack: () => {
-          topNav.classList.remove("is-visible");
-          gsap.to(topNav, { y: -16, autoAlpha: 0, duration: 0.22, ease: "power2.in", overwrite: true });
-        }
-      });
-    }
+    // Nav is now always visible — no scroll-based show/hide needed.
+    // Keeping this function stub so existing call sites don't error.
   }
 
   /* ======== SERVICES ANIMATIONS ======== */

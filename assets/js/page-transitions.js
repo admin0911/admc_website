@@ -36,6 +36,15 @@
     revealPage();
   }
 
+  // bfcache restore: fires when user hits back/forward and browser restores a cached page.
+  // DOMContentLoaded does NOT fire in this case, so the overlay stays opaque without this.
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) {
+      overlay.style.pointerEvents = "none";
+      revealPage();
+    }
+  });
+
   // Fade out (leave) — intercept internal link clicks
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a[href]");

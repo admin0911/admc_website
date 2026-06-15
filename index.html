@@ -22,10 +22,116 @@
     <link rel="stylesheet" href="assets/css/endorsements.css" />
     <link rel="stylesheet" href="assets/css/vendors.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/hero-intro.css" />
+    <!-- Preload first intro card image so it's ready when animation starts -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" />
     <script src="assets/js/page-transitions.js"></script>
   </head>
 
   <body>
+
+  <!-- ── SOLUTION CARD INTRO ────────────────────────── -->
+  <div id="hero-intro" aria-hidden="true">
+
+    <div class="hi-bg"></div>
+
+    <!-- Ambient decorative orbs -->
+    <div class="hi-orb hi-orb--1" aria-hidden="true"></div>
+    <div class="hi-orb hi-orb--2" aria-hidden="true"></div>
+    <div class="hi-orb hi-orb--3" aria-hidden="true"></div>
+
+    <!-- Floating particles -->
+    <div class="hi-particles" aria-hidden="true">
+      <span class="hi-p"></span><span class="hi-p"></span><span class="hi-p"></span>
+      <span class="hi-p"></span><span class="hi-p"></span><span class="hi-p"></span>
+      <span class="hi-p"></span><span class="hi-p"></span><span class="hi-p"></span>
+      <span class="hi-p"></span><span class="hi-p"></span><span class="hi-p"></span>
+    </div>
+
+    <div class="hi-topbar">
+      <span class="hi-topbar__label">OUR SOLUTIONS</span>
+      <button class="hi-skip" id="hi-skip-btn">Skip intro ›</button>
+    </div>
+
+    <div class="hi-arena">
+      <!-- Card 0 – IT Infrastructure Solutions -->
+      <div class="hi-card" data-card="0">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">IT Infrastructure</h3>
+        </div>
+      </div>
+
+      <!-- Card 1 – Intelligent Datacenter Solutions -->
+      <div class="hi-card" data-card="1">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Intelligent Datacenter</h3>
+        </div>
+      </div>
+
+      <!-- Card 2 – Datacenter Power Busbar Solutions -->
+      <div class="hi-card" data-card="2">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Power Busbar</h3>
+        </div>
+      </div>
+
+      <!-- Card 3 – Servers & Storage Solutions -->
+      <div class="hi-card" data-card="3">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Servers &amp; Storage</h3>
+        </div>
+      </div>
+
+      <!-- Card 4 – Telecom & Carrier Infrastructure -->
+      <div class="hi-card" data-card="4">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Telecom &amp; Carrier</h3>
+        </div>
+      </div>
+
+      <!-- Card 5 – Satellite Solutions -->
+      <div class="hi-card" data-card="5">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Satellite Solutions</h3>
+        </div>
+      </div>
+
+      <!-- Card 6 – Aviation Industry -->
+      <div class="hi-card" data-card="6">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Aviation Industry</h3>
+        </div>
+      </div>
+
+      <!-- Card 7 – Enterprise Network Solutions -->
+      <div class="hi-card" data-card="7">
+        <div class="hi-card__img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop')"></div>
+        <div class="hi-card__body">
+          <p class="hi-card__kicker">Solutions</p>
+          <h3 class="hi-card__name">Enterprise Network</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="hi-counter" id="hi-counter">1 / 8</div>
+
+  </div>
+  <!-- /SOLUTION CARD INTRO -->
+
     <div data-header-placeholder data-base-path="" data-header-visible="false"></div>
 
 <!-- HERO -->
@@ -33,8 +139,8 @@
       <div class="hero-sticky">
         <div class="hero-stage">
           <div class="hero-words">
-            <div class="hero-word left" data-word="left">We</div>
-            <div class="hero-word right" data-word="right">Are</div>
+            <div class="hero-word left" data-word="left">All solutions.</div>
+            <div class="hero-word right" data-word="right">One distributor.</div>
           </div>
 
           <div class="hero-pill" data-pill>
@@ -281,7 +387,7 @@
         </a>
 
         <!-- 8 -->
-        <a class="showcase-card showcase-card-link" href="solutions/enterprise-networking.html" aria-label="Open Ruijie Enterprise Network Solutions page">
+        <a class="showcase-card showcase-card-link" href="solutions/enterprise-networking.html" aria-label="Open Enterprise Network Solutions page">
           <div class="showcase-card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M7 8.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4Z" />
@@ -290,7 +396,7 @@
               <path d="M8.4 7.6l7.1 3.2M16 12.8l-5.2 3.6" stroke-linecap="round" />
             </svg>
           </div>
-          <h3 class="showcase-card-title">Ruijie Enterprise Network Solutions</h3>
+          <h3 class="showcase-card-title">Enterprise Network Solutions</h3>
           <p class="showcase-card-text">Enterprise switching, Wi-Fi, and networking solutions designed for performance and scale.</p>
         </a>
       </div>
@@ -863,6 +969,129 @@
     <!-- Animation Coordinator -->
     <script src="assets/js/header-include.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <!-- Hero Intro Card Animation -->
+    <script>
+    (function () {
+      'use strict';
+
+      var intro   = document.getElementById('hero-intro');
+      var counter = document.getElementById('hi-counter');
+      var skipBtn = document.getElementById('hi-skip-btn');
+
+      if (!intro || typeof gsap === 'undefined') {
+        if (intro) intro.style.display = 'none';
+        document.documentElement.style.overflow = '';
+        document.dispatchEvent(new CustomEvent('admc:intro-done'));
+        return;
+      }
+
+      var cards  = Array.from(intro.querySelectorAll('.hi-card'));
+      var total  = cards.length;  // 8
+      var cur    = -1;
+      var timer  = null;
+      var done   = false;
+
+      // Interval accelerates slightly as more cards appear (keeps energy up)
+      var INTERVALS = [1300, 1200, 1150, 1100, 1050, 1000, 950, 900];
+
+      document.documentElement.style.overflow = 'hidden';
+
+      // All cards: anchored to arena centre, hidden below
+      gsap.set(cards, { xPercent: -50, yPercent: -50, x: 0, y: 180, scale: 0.68, opacity: 0 });
+
+      /* ── 8-point circular orbit, starting from top, clockwise ── */
+      function getOrbits() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        // Wider orbit so cards don't crowd the centre card
+        var rx = Math.min(vw * 0.36, 300);
+        var ry = Math.min(vh * 0.28, rx * 0.65);
+        var pts = [];
+        for (var i = 0; i < 8; i++) {
+          // Start at -90° (top), clockwise
+          var angle = -Math.PI / 2 + (i * 2 * Math.PI / 8);
+          pts.push({ x: Math.cos(angle) * rx, y: Math.sin(angle) * ry });
+        }
+        return pts;
+      }
+
+      function updateCounter(idx) {
+        if (counter) counter.textContent = (idx + 1) + ' / ' + total;
+      }
+
+      function revealNext() {
+        if (done) return;
+        cur++;
+
+        if (cur >= total) {
+          timer = setTimeout(finish, 800);
+          return;
+        }
+
+        updateCounter(cur);
+
+        var orbits = getOrbits();
+
+        // Bring current card up from below to centre stage
+        gsap.to(cards[cur], {
+          x: 0, y: 0, scale: 1, opacity: 1,
+          duration: 0.62, ease: 'back.out(1.5)',
+          overwrite: 'auto'
+        });
+
+        // Redistribute all previous cards across orbit slots
+        for (var i = 0; i < cur; i++) {
+          var o = orbits[i % orbits.length];
+          gsap.to(cards[i], {
+            x: o.x, y: o.y, scale: 0.48, opacity: 0.55,
+            duration: 0.58, ease: 'power3.out',
+            overwrite: 'auto'
+          });
+        }
+
+        var interval = INTERVALS[cur] || 900;
+        timer = setTimeout(revealNext, interval);
+      }
+
+      function finish() {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+
+        // Orbit cards fade out first, then centre card implodes into the pill
+        var orbitCards = cards.slice(0, cards.length - 1);
+        var centreCard = cards[cards.length - 1];
+
+        gsap.to(orbitCards, {
+          opacity: 0, scale: 0.35,
+          duration: 0.38, ease: 'power2.in',
+          stagger: { amount: 0.12, from: 'edges' },
+          overwrite: true
+        });
+
+        gsap.to(centreCard, {
+          scale: 0.06, opacity: 0,
+          duration: 0.52, ease: 'power2.in',
+          delay: 0.18,
+          overwrite: true,
+          onComplete: function () {
+            gsap.to(intro, {
+              opacity: 0, duration: 0.42, ease: 'power1.inOut',
+              onComplete: function () {
+                intro.style.display = 'none';
+                document.documentElement.style.overflow = '';
+                document.dispatchEvent(new CustomEvent('admc:intro-done'));
+              }
+            });
+          }
+        });
+      }
+
+      skipBtn.addEventListener('click', finish);
+      revealNext();
+    })();
+    </script>
   </body>
 </html>
 

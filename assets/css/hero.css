@@ -44,18 +44,19 @@ section[data-animate="hero-reveal"] {
   letter-spacing: -0.03em;
   white-space: nowrap;
   line-height: 1;
-  font-size: clamp(44px, 7vw, 120px);
+  font-size: clamp(28px, 3.6vw, 62px);
   text-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
   will-change: transform, opacity;
 }
 
-/* Start closer (not at edges). We animate them OUT from here. */
+/* Phrases flank the pill — right/left properties position them,
+   GSAP adds x for the fly-out so no CSS translateX conflict. */
 .hero-word.left {
-  left: 35%;
+  right: 51%;
 }
 
 .hero-word.right {
-  right: 35%;
+  left: 51%;
 }
 
 .hero-pill {

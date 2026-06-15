@@ -125,12 +125,8 @@
     cta.className = 'top-nav__cta';
     cta.textContent = 'CONTACT';
 
-    /* Visibility state */
-    if (placeholder.dataset.headerVisible === 'true') {
-      header.classList.add('is-visible');
-    } else {
-      header.classList.remove('is-visible');
-    }
+    /* Nav is always visible — fixed permanently to the top */
+    header.classList.add('is-visible');
 
     /* Hrefs */
     function setHref(sel, path) {
@@ -224,27 +220,6 @@
         fab.classList.remove('is-visible');
       }
     }
-
-    /* Watch for is-visible toggled by GSAP / scroll logic */
-    if (typeof MutationObserver !== 'undefined') {
-      var mo = new MutationObserver(syncFab);
-      mo.observe(header, { attributes: true, attributeFilter: ['class'] });
-    }
-
-    /* Also poll opacity since GSAP uses inline style for autoAlpha */
-    var _syncTimer = setInterval(function () {
-      var style = window.getComputedStyle(header);
-      var visible = parseFloat(style.opacity) > 0.1 && style.visibility !== 'hidden';
-      if (window.innerWidth <= 980) {
-        if (visible) fab.classList.add('is-visible');
-        else fab.classList.remove('is-visible');
-      } else {
-        fab.classList.remove('is-visible');
-      }
-    }, 200);
-
-    /* Stop polling once stable (after 8 s) */
-    setTimeout(function () { clearInterval(_syncTimer); }, 8000);
 
     window.addEventListener('resize', syncFab);
 

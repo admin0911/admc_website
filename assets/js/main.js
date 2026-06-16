@@ -204,6 +204,16 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
     if (!cardsTrack || !viewport || !cards.length) return;
 
+    // Mobile: skip the scroll-jacked vertical pin entirely — cards.css
+    // turns them into a native horizontal swipe carousel instead, so the
+    // headline never blocks content and users can swipe freely or just
+    // keep scrolling past the section.
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      chunks.forEach((el) => el.classList.add("is-active"));
+      cards.forEach((c) => c.classList.add("is-active"));
+      return;
+    }
+
     const gap = () => parseFloat(getComputedStyle(cardsTrack).gap) || 0;
     const peekRatio = () => {
       const v = parseFloat(

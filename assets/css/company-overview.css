@@ -587,7 +587,7 @@
 
 .ov-intro__title {
   margin: 0 auto;
-  max-width: 13ch;
+  max-width: 26ch;
   font-size: clamp(44px, 6.9vw, 94px);
   line-height: 1.14;
   letter-spacing: -0.043em;
@@ -1156,6 +1156,13 @@ html.is-inverted .ov-step__photoImg {
 }
 
 @media (max-width: 760px) {
+  /* Shrink so "AI-ready architecture." / "Vendor-aligned delivery."
+     balances onto 2 lines instead of wrapping word-by-word into 4 */
+  .ov-intro__title {
+    max-width: 22ch;
+    font-size: clamp(28px, 8.6vw, 40px);
+  }
+
   /* Mobile timeline: single-card view */
   .ov-history__row {
     grid-template-columns: 1fr;

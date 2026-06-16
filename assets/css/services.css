@@ -85,7 +85,7 @@ section.services {
   font-size: 15px;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 920px) and (min-width: 761px) {
   .services-wrap {
     grid-template-columns: 1fr;
   }
@@ -102,5 +102,63 @@ section.services {
 
   .services-wrap {
     gap: clamp(12px, 2vw, 20px);
+  }
+}
+
+/* ======================================================
+   MOBILE — horizontal swipe carousel
+   The scroll-jacked vertical pin (above) is replaced with a
+   normal block layout + native horizontal scroll-snap, so
+   the header never blocks content and users can swipe
+   through cards or skip past the section entirely.
+====================================================== */
+@media (max-width: 760px) {
+  section.services {
+    min-height: auto;
+  }
+
+  .services-sticky {
+    position: static;
+    height: auto;
+    display: block;
+    padding: clamp(16px, 5vw, 28px) 0;
+  }
+
+  .services-wrap {
+    width: min(640px, 92vw);
+    display: block;
+    margin: 0 auto;
+  }
+
+  .headline {
+    margin-bottom: clamp(16px, 4vw, 24px);
+  }
+
+  .cards-viewport {
+    height: auto;
+    overflow: visible;
+  }
+
+  .cards-track {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding: 4px 12px 14px 0;
+    scrollbar-width: none;
+  }
+
+  .cards-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .svc-card,
+  .svc-card.is-active {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

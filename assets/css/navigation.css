@@ -439,9 +439,13 @@ body.top-nav-menu-open {
   .top-nav {
     /* Flush to top of viewport (announcement bar pushes it via --ann-h in its own CSS) */
     top: var(--ann-h, 0px) !important;
+    /* Use left:0 + width:100vw instead of left:50%/translateX(-50%) so that
+       filter:invert on <html> (dark mode) doesn't make the containing block
+       wider than the viewport and shift the nav off-screen. */
+    left: 0;
     width: 100vw;
     border-radius: 0 0 14px 14px;
-    transform: translateX(-50%);
+    transform: none;
     /* Fully opaque so page content never bleeds through on mobile */
     background: rgb(230, 230, 230);
     backdrop-filter: none;
@@ -449,7 +453,7 @@ body.top-nav-menu-open {
   }
 
   .top-nav.is-visible {
-    transform: translateX(-50%);
+    transform: none;
   }
 
   .top-nav__inner {

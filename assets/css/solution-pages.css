@@ -614,7 +614,7 @@
 .vendor-logoRow img,
 .vendor-hero img {
   width: 100%;
-  max-height: 42px;
+  max-height: 64px;
   object-fit: contain;
 }
 
@@ -622,7 +622,7 @@
 .partner-card__logo img[src*="supermicro"],
 .vendor-logoRow img[src*="supermicro"],
 .vendor-hero img[src*="supermicro"] {
-  max-height: 56px;
+  max-height: 80px;
 }
 
 .sol-logoGrid--media {

@@ -213,10 +213,40 @@
   }
 }
 
-@media (max-width: 640px) {
+/* Mobile: drop the scroll-jacked pin entirely — cards stack naturally */
+@media (max-width: 760px) {
+  .why2__pin {
+    min-height: auto;
+    display: block;
+  }
+
   .why2__stage {
-    height: 65vh;
-    min-height: 320px;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .why2__card {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .why2__media {
+    order: 1;
+    min-height: 180px;
+  }
+
+  .why2__left {
+    order: 2;
   }
 }
 

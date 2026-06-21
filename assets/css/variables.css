@@ -44,10 +44,27 @@
   --sol-stroke: 1.8;
 }
 
-/* Keep accent visually consistent under global invert mode */
+/* ── Secondary "Deep Space" theme ────────────────────────
+   Activated by html.is-inverted. A true alternative dark
+   palette — deep-black base with electric-teal accent.
+   No filter hack: all colours switch via CSS variables.
+──────────────────────────────────────────────────────── */
 html.is-inverted {
-  --accent: #4775d0;
-  --accent-strong: #2d5db5;
-  --accent-soft: rgba(71, 117, 208, 0.18);
-  --accent-shadow-rgb: 71, 117, 208;
+  --bg1: #0c0b1a;
+  --bg2: #090817;
+  --bg3: #060511;
+
+  --text: rgba(232, 230, 255, 0.93);
+  --textDim: rgba(232, 230, 255, 0.65);
+
+  --card: rgba(255, 255, 255, 0.05);
+  --cardText: rgba(232, 230, 255, 0.92);
+  --muted: rgba(232, 230, 255, 0.45);
+
+  --accent: #00d4aa;
+  --accent-strong: #00f0c4;
+  --accent-soft: rgba(0, 212, 170, 0.18);
+  --accent-shadow-rgb: 0, 212, 170;
+
+  --sol-border: rgba(255, 255, 255, 0.10);
 }

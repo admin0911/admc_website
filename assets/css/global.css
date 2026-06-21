@@ -8,7 +8,8 @@
 }
 
 html {
-  transition: filter 220ms ease;
+  /* Smooth background/colour transition when theme switches */
+  transition: background-color 240ms ease, color 240ms ease;
 }
 
 body {
@@ -23,44 +24,62 @@ body {
   overflow-x: hidden;
 }
 
-html.is-inverted {
-  filter: invert(1) hue-rotate(180deg);
+/* ── Logo swap via CSS — instant, no JS flash ──────────
+   Primary theme: light-grey nav → use the dark logo.
+   Secondary theme: dark nav → use the white logo.
+   content:url() on <img> overrides the src attribute and
+   is resolved relative to this stylesheet.
+──────────────────────────────────────────────────────── */
+.top-nav [data-nav-logo] {
+  content: url('../images/Logo/ADMC_LOGO.PNG');
+}
+html.is-inverted .top-nav [data-nav-logo] {
+  content: url('../images/Logo/ADMC_LOGO_White.png');
 }
 
-html.is-inverted img,
-html.is-inverted video,
-html.is-inverted picture,
-html.is-inverted canvas {
-  filter: invert(1) hue-rotate(180deg);
+/* Footer logo is always white — both themes have a dark footer */
+.site-footer__wordmark img {
+  content: url('../images/Logo/ADMC_LOGO_White.png');
 }
 
-html.is-inverted .top-nav__avatar img,
-html.is-inverted .site-footer__wordmark img,
-html.is-inverted .partner-logo img,
-html.is-inverted .vendor-card__tile img,
-html.is-inverted .partner-card__logo img,
-html.is-inverted .vendor-heroLogo img,
-html.is-inverted .sol-logoGrid img,
-html.is-inverted .vendor-logoRow img,
-html.is-inverted img[src*="/Vendors/"],
-html.is-inverted img[src*="\\Vendors\\"] {
-  filter: invert(1) hue-rotate(180deg) !important;
+/* ── Secondary theme: section overrides ─────────────── */
+
+/* Partner banner — was #efefec in primary, dark in secondary */
+html.is-inverted .partners-banner {
+  background: #0d0c1e;
+  color: rgba(232, 230, 255, 0.9);
+}
+html.is-inverted .partners-banner__title {
+  color: rgba(232, 230, 255, 0.9);
 }
 
+/* Logo tiles — white containers become dark glass */
 html.is-inverted .partner-card__logo,
 html.is-inverted .vendor-heroLogo,
-html.is-inverted .sol-logoGrid a,
-html.is-inverted .vendor-logoRow a,
-html.is-inverted .vendor-card__tile {
-  filter: invert(1) hue-rotate(180deg);
+html.is-inverted .panduit-hero__media--logo {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+html.is-inverted .panduit-contactCard img {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
-html.is-inverted .partner-card__logo img,
-html.is-inverted .vendor-heroLogo img,
-html.is-inverted .sol-logoGrid a img,
-html.is-inverted .vendor-logoRow a img,
-html.is-inverted .vendor-card__tile img {
-  filter: none !important;
+/* Vendor page info card */
+html.is-inverted .panduit-infoCard {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Company-overview light stat cards */
+html.is-inverted .ov-step--statLight,
+html.is-inverted .ov-step--statWorld {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(232, 230, 255, 0.92);
+}
+html.is-inverted .ov-step__text {
+  color: rgba(232, 230, 255, 0.60);
 }
 
 /* ======================================================

@@ -445,7 +445,19 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     if (!why2Section || !why2Pin || !why2Cards.length) return;
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobile = window.matchMedia("(max-width: 640px)").matches;
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+
+    // Mobile: skip the scroll-jacked pin+snap — why-admc.css converts the
+    // stage to a natural stacked layout so iOS momentum scrolling works freely.
+    if (isMobile) {
+      why2Cards.forEach((card) => {
+        gsap.set(card, { autoAlpha: 1, y: 0, scale: 1 });
+        card.style.position = "relative";
+        card.style.inset = "auto";
+        card.style.pointerEvents = "auto";
+      });
+      return;
+    }
     let activeIndex = -1;
 
     function showCard(nextIndex) {

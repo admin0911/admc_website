@@ -53,16 +53,15 @@ html.is-inverted .partners-banner__title {
   color: rgba(232, 230, 255, 0.9);
 }
 
-/* Logo tiles — white containers become dark glass */
-html.is-inverted .partner-card__logo,
-html.is-inverted .vendor-heroLogo,
-html.is-inverted .panduit-hero__media--logo {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.12);
+/* Logo tiles — always keep white background so logo colours show correctly
+   regardless of theme. Only the border softens slightly in deep-space mode. */
+html.is-inverted .partner-card__logo {
+  border-color: rgba(255, 255, 255, 0.18);
 }
-html.is-inverted .panduit-contactCard img {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.12);
+html.is-inverted .sol-logoGrid a,
+html.is-inverted .vendor-logoRow a {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 /* Vendor page info card */

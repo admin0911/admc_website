@@ -149,7 +149,7 @@
   display: block;
   text-decoration: none;
   color: inherit;
-  padding: 18px;
+  padding: clamp(20px, 2.4vw, 32px);
   min-height: 205px;
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
@@ -163,14 +163,7 @@
 }
 
 .solutions-page .sol-grid .sol-card::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  border-radius: 0 0 17px 17px;
-  background: linear-gradient(90deg, rgba(var(--accent-shadow-rgb), 0.95), rgba(var(--accent-shadow-rgb), 0.4));
+  display: none;
 }
 
 .sol-card h3 {

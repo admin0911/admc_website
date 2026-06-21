@@ -246,6 +246,12 @@
   transform: scale(1.05);
 }
 
+/* Dark logo box — for logos that are white/light coloured */
+.client-card__logo--dark {
+  background: #1a1a2e;
+  border-radius: 10px;
+}
+
 /* Initials fallback shown when no image */
 .client-card__initials {
   width: 56px;

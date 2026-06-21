@@ -157,6 +157,11 @@
   display: block;
 }
 
+/* Dark tile — for white/light logos */
+.client-logo-tile--dark {
+  background: #1a1a2e;
+}
+
 @keyframes clients-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

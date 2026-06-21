@@ -2,6 +2,19 @@
    MANAGEMENT TEAM ANIMATIONS
 ====================================================== */
 
+// Pillar infographic — stagger in on scroll
+(function () {
+  const pillars = document.querySelectorAll("[data-mg-pillar]");
+  if (!pillars.length) return;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); } });
+    },
+    { threshold: 0.15 }
+  );
+  pillars.forEach((p) => io.observe(p));
+})();
+
 if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 

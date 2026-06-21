@@ -678,7 +678,7 @@
   color: rgba(255, 255, 255, 0.72);
   font-size: clamp(14px, 1vw, 17px);
   line-height: 1.5;
-  text-align: justify;
+  text-align: left;
 }
 
 .ov-infographic {
@@ -1113,14 +1113,13 @@ html.is-inverted .ov-step__photoImg {
     font-size: 10px;
   }
 
-  .ov-intro__rail,
+  /* Keep intro rail at 3-col (3 items always fit) — only other grids collapse */
   .ov-domains__grid,
   .ov-metrics__wrap {
     grid-template-columns: 1fr 1fr;
   }
 
   /* Center last item when it's alone in the final row of a 2-col grid */
-  .ov-intro__rail > :last-child:nth-child(odd),
   .ov-domains__grid > :last-child:nth-child(odd),
   .ov-metrics__wrap > :last-child:nth-child(odd) {
     grid-column: 1 / -1;

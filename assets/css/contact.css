@@ -363,11 +363,13 @@
 ====================================================== */
 
 html.is-inverted .contact-page {
-  --contact-accent-primary: #f5c77a;
-  --contact-accent-soft: rgba(245, 199, 122, 0.18);
-  --contact-surface-dark: #11182f;
-  --contact-surface-card: rgba(255, 255, 255, 0.08);
-  --contact-border-subtle: rgba(255, 255, 255, 0.2);
+  --contact-bg-primary: #080716;
+  --contact-bg-secondary: #0d0c1e;
+  --contact-accent-primary: #00d4aa;
+  --contact-accent-soft: rgba(0, 212, 170, 0.14);
+  --contact-surface-dark: #060511;
+  --contact-surface-card: rgba(255, 255, 255, 0.05);
+  --contact-border-subtle: rgba(255, 255, 255, 0.14);
 }
 
 html.is-inverted .contact-page main img,

@@ -476,18 +476,20 @@
   line-height: 1.58;
 }
 
+/* Secondary theme: hero logo box and contact card logo stay white so
+   vendor logo colours are always displayed as-is. The --logoDark modifier
+   handles vendors whose logos are white/light (e.g. Sabrewing). */
 html.is-inverted .panduit-hero__media--logo {
   background: #ffffff;
-  filter: invert(1) hue-rotate(180deg);
 }
 
-html.is-inverted .panduit-hero__media--logo img {
+html.is-inverted .panduit-hero__media--logo img,
+html.is-inverted .panduit-contactCard img {
   filter: none !important;
 }
 
 html.is-inverted .panduit-contactCard img {
   background: #ffffff;
-  filter: invert(1) hue-rotate(180deg) !important;
 }
 
 .panduit-ctaRow {

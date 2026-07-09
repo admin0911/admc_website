@@ -159,6 +159,7 @@
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   width: 100%;
   border: 1px solid var(--contact-border-subtle);
@@ -172,6 +173,22 @@
 
 .contact-form input {
   height: 48px;
+}
+
+.contact-form select {
+  height: 48px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.7)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.contact-form select option {
+  background-color: #2e2b8f;
+  color: #fff;
 }
 
 .contact-form textarea {

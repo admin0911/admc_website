@@ -4,7 +4,7 @@
     if (!form || form.dataset.nlBound === "1") return;
     form.dataset.nlBound = "1";
 
-    var input = form.querySelector('input[type="email"]');
+    var input  = form.querySelector('input[type="email"]');
     var button = form.querySelector('button[type="submit"]');
 
     form.addEventListener("submit", async function (e) {
@@ -24,8 +24,11 @@
         });
 
         if (res.ok) {
+          if (input)  input.value = "";
           if (button) button.textContent = "Subscribed!";
-          if (input) input.value = "";
+          if (typeof window.admcShowModal === "function") {
+            window.admcShowModal("newsletter");
+          }
         } else {
           var data = await res.json().catch(function () { return {}; });
           if (button) { button.disabled = false; button.textContent = originalText; }
@@ -38,8 +41,6 @@
     });
   }
 
-  // Runs immediately if DOM is already ready (dynamic script injection case),
-  // otherwise waits for DOMContentLoaded (static script tag case).
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

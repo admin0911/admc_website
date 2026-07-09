@@ -38,11 +38,11 @@
               <div class="contact-form__grid">
                 <label>
                   <span>First Name</span>
-                  <input type="text" name="first_name" placeholder="Type your name" required />
+                  <input type="text" name="first_name" placeholder="Type your first name" required />
                 </label>
                 <label>
                   <span>Last Name</span>
-                  <input type="text" name="last_name" placeholder="Type your name" required />
+                  <input type="text" name="last_name" placeholder="Type your last name" required />
                 </label>
                 <label>
                   <span>Email Address</span>
@@ -53,12 +53,31 @@
                   <input type="tel" name="phone" placeholder="Type your phone number" required />
                 </label>
                 <label>
+                  <span>Company</span>
+                  <input type="text" name="company" placeholder="Your company name" required />
+                </label>
+                <label>
+                  <span>Designation</span>
+                  <input type="text" name="designation" placeholder="Your job title" required />
+                </label>
+                <label>
                   <span>Country</span>
                   <input type="text" name="country" placeholder="Type your country" required />
                 </label>
                 <label>
-                  <span>Service</span>
-                  <input type="text" name="service" placeholder="Type your service" required />
+                  <span>Solution</span>
+                  <select name="solution" required>
+                    <option value="" disabled selected>Select a solution</option>
+                    <option value="IT Infrastructure">IT Infrastructure</option>
+                    <option value="Intelligent Datacenter">Intelligent Datacenter</option>
+                    <option value="Power &amp; Busbar">Power &amp; Busbar</option>
+                    <option value="Servers &amp; Storage">Servers &amp; Storage</option>
+                    <option value="Telecom &amp; Carrier Infrastructure">Telecom &amp; Carrier Infrastructure</option>
+                    <option value="Enterprise Networking">Enterprise Networking</option>
+                    <option value="Satellite">Satellite</option>
+                    <option value="Aviation Industry">Aviation Industry</option>
+                    <option value="General Enquiry">General Enquiry / Other</option>
+                  </select>
                 </label>
                 <label class="contact-form__full">
                   <span>Message</span>
@@ -222,8 +241,8 @@
     <script src="assets/js/announcement-bar.js"></script>
     <script src="assets/js/header-include.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/form-modal.js"></script>
     <script src="assets/js/contact.js"></script>
-    <script src="assets/js/newsletter.js"></script>
   </body>
 </html>
 

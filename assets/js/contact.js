@@ -143,13 +143,15 @@ document.addEventListener("DOMContentLoaded", () => {
     submit.textContent = "Sending…";
 
     const data = {
-      first_name: form.querySelector('[name="first_name"]')?.value?.trim() || "",
-      last_name:  form.querySelector('[name="last_name"]')?.value?.trim()  || "",
-      email:      form.querySelector('[name="email"]')?.value?.trim()      || "",
-      phone:      form.querySelector('[name="phone"]')?.value?.trim()      || "",
-      country:    form.querySelector('[name="country"]')?.value?.trim()    || "",
-      service:    form.querySelector('[name="service"]')?.value?.trim()    || "",
-      message:    form.querySelector('[name="message"]')?.value?.trim()    || "",
+      first_name:  form.querySelector('[name="first_name"]')?.value?.trim()  || "",
+      last_name:   form.querySelector('[name="last_name"]')?.value?.trim()   || "",
+      email:       form.querySelector('[name="email"]')?.value?.trim()       || "",
+      phone:       form.querySelector('[name="phone"]')?.value?.trim()       || "",
+      company:     form.querySelector('[name="company"]')?.value?.trim()     || "",
+      designation: form.querySelector('[name="designation"]')?.value?.trim() || "",
+      country:     form.querySelector('[name="country"]')?.value?.trim()     || "",
+      solution:    form.querySelector('[name="solution"]')?.value?.trim()    || "",
+      message:     form.querySelector('[name="message"]')?.value?.trim()     || "",
     };
 
     try {
@@ -163,6 +165,9 @@ document.addEventListener("DOMContentLoaded", () => {
         submit.textContent = "Message Sent";
         submit.style.filter = "saturate(0.8)";
         form.reset();
+        if (typeof window.admcShowModal === "function") {
+          window.admcShowModal("contact");
+        }
       } else {
         const body = await res.json().catch(() => ({}));
         submit.disabled = false;

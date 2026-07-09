@@ -21,7 +21,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: "Invalid request" }) };
   }
 
-  const { first_name, last_name, email, phone, country, service, message } = body;
+  const { first_name, last_name, email, phone, company, designation, country, solution, message } = body;
 
   if (!first_name || !last_name || !email) {
     return { statusCode: 400, body: JSON.stringify({ error: "Name and email are required" }) };
@@ -57,11 +57,11 @@ exports.handler = async (event) => {
             email_address: email,
             status_if_new: "subscribed",
             merge_fields: {
-              FNAME: first_name,
-              LNAME: last_name,
-              PHONE: phone || "",
-              COUNTRY: country || "",
-              SERVICE: service || "",
+              FNAME:   first_name,
+              LNAME:   last_name,
+              PHONE:   phone       || "",
+              COUNTRY: country     || "",
+              SERVICE: solution    || "",
             },
             tags: ["contact-form"],
           }),
@@ -89,34 +89,21 @@ exports.handler = async (event) => {
         body: JSON.stringify({
           from: FROM_EMAIL,
           to: [NOTIFICATION_EMAIL],
-          subject: `New Enquiry: ${esc(first_name)} ${esc(last_name)} — ${esc(service) || "General"}`,
+          subject: `New Enquiry: ${esc(first_name)} ${esc(last_name)} — ${esc(solution) || "General"}`,
           html: `
-            <div style="font-family:sans-serif;max-width:560px">
-              <h2 style="color:#1a1a2e">New Contact Form Submission</h2>
-              <table style="border-collapse:collapse;width:100%">
-                <tr style="background:#f5f5f5">
-                  <td style="padding:8px 14px;font-weight:600;width:120px">Name</td>
-                  <td style="padding:8px 14px">${esc(first_name)} ${esc(last_name)}</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px 14px;font-weight:600">Email</td>
-                  <td style="padding:8px 14px"><a href="mailto:${esc(email)}">${esc(email)}</a></td>
-                </tr>
-                <tr style="background:#f5f5f5">
-                  <td style="padding:8px 14px;font-weight:600">Phone</td>
-                  <td style="padding:8px 14px">${esc(phone) || "—"}</td>
-                </tr>
-                <tr>
-                  <td style="padding:8px 14px;font-weight:600">Country</td>
-                  <td style="padding:8px 14px">${esc(country) || "—"}</td>
-                </tr>
-                <tr style="background:#f5f5f5">
-                  <td style="padding:8px 14px;font-weight:600">Service</td>
-                  <td style="padding:8px 14px">${esc(service) || "—"}</td>
-                </tr>
+            <div style="font-family:sans-serif;max-width:580px">
+              <h2 style="color:#1a1a2e;margin-bottom:20px">New Contact Form Submission</h2>
+              <table style="border-collapse:collapse;width:100%;font-size:14px">
+                <tr style="background:#f5f5f5"><td style="padding:10px 14px;font-weight:600;width:130px">Name</td><td style="padding:10px 14px">${esc(first_name)} ${esc(last_name)}</td></tr>
+                <tr><td style="padding:10px 14px;font-weight:600">Email</td><td style="padding:10px 14px"><a href="mailto:${esc(email)}">${esc(email)}</a></td></tr>
+                <tr style="background:#f5f5f5"><td style="padding:10px 14px;font-weight:600">Phone</td><td style="padding:10px 14px">${esc(phone) || "—"}</td></tr>
+                <tr><td style="padding:10px 14px;font-weight:600">Company</td><td style="padding:10px 14px">${esc(company) || "—"}</td></tr>
+                <tr style="background:#f5f5f5"><td style="padding:10px 14px;font-weight:600">Designation</td><td style="padding:10px 14px">${esc(designation) || "—"}</td></tr>
+                <tr><td style="padding:10px 14px;font-weight:600">Country</td><td style="padding:10px 14px">${esc(country) || "—"}</td></tr>
+                <tr style="background:#f5f5f5"><td style="padding:10px 14px;font-weight:600">Solution</td><td style="padding:10px 14px">${esc(solution) || "—"}</td></tr>
               </table>
-              <h3 style="color:#1a1a2e;margin-top:24px">Message</h3>
-              <p style="white-space:pre-wrap;background:#f5f5f5;padding:14px;border-radius:6px">${esc(message) || "—"}</p>
+              <h3 style="color:#1a1a2e;margin-top:24px;margin-bottom:8px">Message</h3>
+              <p style="white-space:pre-wrap;background:#f5f5f5;padding:14px;border-radius:6px;font-size:14px">${esc(message) || "—"}</p>
             </div>
           `,
         }),

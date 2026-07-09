@@ -249,10 +249,15 @@
 
     configureHeader(placeholder);
 
-    // Load newsletter handler on every page (footer form)
-    var nlScript = document.createElement('script');
-    nlScript.src = joinPath(basePath, 'assets/js/newsletter.js');
-    document.head.appendChild(nlScript);
+    // Load modal first, then newsletter (newsletter depends on admcShowModal)
+    var modalScript = document.createElement('script');
+    modalScript.src = joinPath(basePath, 'assets/js/form-modal.js');
+    modalScript.onload = function () {
+      var nlScript = document.createElement('script');
+      nlScript.src = joinPath(basePath, 'assets/js/newsletter.js');
+      document.head.appendChild(nlScript);
+    };
+    document.head.appendChild(modalScript);
   });
 
 })();

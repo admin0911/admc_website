@@ -64,6 +64,26 @@ html.is-inverted .vendor-logoRow a {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
+/* Runner logo tiles — force solid white in deep-space mode so dark logos
+   don't bleed into the near-black page background */
+html.is-inverted .vendor-card__tile {
+  background: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+html.is-inverted .client-logo-tile {
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.40);
+}
+
+/* Dark tiles (white logos) get a raised dark card so they read as containers */
+html.is-inverted .client-logo-tile--dark {
+  background: #1e1b3a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
 /* Vendor page info card */
 html.is-inverted .panduit-infoCard {
   background: rgba(255, 255, 255, 0.06);

@@ -125,19 +125,54 @@ if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
     });
   }
 
-  function initContactFormState() {
-    const form = document.querySelector("#contact-form");
-    if (!form) return;
-
-    const submit = form.querySelector(".contact-form__submit");
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!submit) return;
-
-      submit.disabled = true;
-      submit.textContent = "Message Sent";
-      submit.style.filter = "saturate(0.8)";
-    });
-  }
 }
+
+// Form submission — runs regardless of GSAP availability
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("#contact-form");
+  if (!form) return;
+
+  const submit = form.querySelector(".contact-form__submit");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!submit) return;
+
+    const originalText = submit.textContent;
+    submit.disabled = true;
+    submit.textContent = "Sending…";
+
+    const data = {
+      first_name: form.querySelector('[name="first_name"]')?.value?.trim() || "",
+      last_name:  form.querySelector('[name="last_name"]')?.value?.trim()  || "",
+      email:      form.querySelector('[name="email"]')?.value?.trim()      || "",
+      phone:      form.querySelector('[name="phone"]')?.value?.trim()      || "",
+      country:    form.querySelector('[name="country"]')?.value?.trim()    || "",
+      service:    form.querySelector('[name="service"]')?.value?.trim()    || "",
+      message:    form.querySelector('[name="message"]')?.value?.trim()    || "",
+    };
+
+    try {
+      const res = await fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        submit.textContent = "Message Sent";
+        submit.style.filter = "saturate(0.8)";
+        form.reset();
+      } else {
+        const body = await res.json().catch(() => ({}));
+        submit.disabled = false;
+        submit.textContent = originalText;
+        alert(body.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      submit.disabled = false;
+      submit.textContent = originalText;
+      alert("Connection error. Please try again.");
+    }
+  });
+});

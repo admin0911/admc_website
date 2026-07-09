@@ -248,6 +248,11 @@
     }
 
     configureHeader(placeholder);
+
+    // Load newsletter handler on every page (footer form)
+    var nlScript = document.createElement('script');
+    nlScript.src = joinPath(basePath, 'assets/js/newsletter.js');
+    document.head.appendChild(nlScript);
   });
 
 })();

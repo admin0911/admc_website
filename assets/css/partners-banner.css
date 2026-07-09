@@ -12,9 +12,12 @@
   width: 100%;
 }
 
-/* Global dark mode uses root invert; use black source so final render is white. */
 html.is-inverted .partners-banner {
-  background: #000;
+  background: #ffffff;
+}
+
+html.is-inverted .partners-banner__title {
+  color: rgba(0, 0, 0, 0.88);
 }
 
 .partners-banner__wrap {

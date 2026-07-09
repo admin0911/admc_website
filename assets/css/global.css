@@ -45,13 +45,7 @@ html.is-inverted .top-nav [data-nav-logo] {
 /* ── Secondary theme: section overrides ─────────────── */
 
 /* Partner banner — was #efefec in primary, dark in secondary */
-html.is-inverted .partners-banner {
-  background: #0d0c1e;
-  color: rgba(232, 230, 255, 0.9);
-}
-html.is-inverted .partners-banner__title {
-  color: rgba(232, 230, 255, 0.9);
-}
+/* Partners banner dark-mode colours are handled in partners-banner.css */
 
 /* Logo tiles — always keep white background so logo colours show correctly
    regardless of theme. Only the border softens slightly in deep-space mode. */

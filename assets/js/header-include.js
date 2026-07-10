@@ -260,4 +260,22 @@
     document.head.appendChild(modalScript);
   });
 
+  /* bfcache restore (mobile back/forward between pages): DOMContentLoaded
+     does NOT fire, so configureHeader() never re-runs — but the FAB is a
+     position:fixed element appended dynamically via JS, and WebKit/mobile
+     browsers sometimes fail to repaint it after a bfcache restore, making
+     it look like it "went missing" even though it's still in the DOM.
+     Forcing a reflow puts it back on screen. */
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    ['ham-fab', 'ham-overlay'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var prevDisplay = el.style.display;
+      el.style.display = 'none';
+      void el.offsetHeight; // force reflow
+      el.style.display = prevDisplay;
+    });
+  });
+
 })();

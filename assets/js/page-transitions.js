@@ -66,13 +66,26 @@
       return;
     }
 
+    // Skip: links that just add/change the hash on the *same* document
+    // (e.g. the logo's "index.html#hero" while already on index.html).
+    // Changing only the hash doesn't reload the page, so DOMContentLoaded
+    // never re-fires and the fade overlay would otherwise stay opaque forever.
+    var dest = new URL(href, window.location.href);
+    var normalize = function (path) { return path.replace(/\/index\.html$/, "/") || "/"; };
+    if (
+      dest.origin === window.location.origin &&
+      normalize(dest.pathname) === normalize(window.location.pathname) &&
+      dest.hash
+    ) {
+      return;
+    }
+
     e.preventDefault();
     overlay.style.pointerEvents = "all";
     overlay.style.opacity = "1";
 
-    var dest = href;
     setTimeout(function () {
-      window.location.href = dest;
+      window.location.href = href;
     }, 320);
   });
 })();

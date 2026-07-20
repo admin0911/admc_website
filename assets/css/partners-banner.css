@@ -81,10 +81,6 @@ html.is-inverted .partners-banner__title {
   max-height: 110px;
 }
 
-.partner-logo--seeker img {
-  max-height: 80px;
-}
-
 /* Sabrewing has a white/light logo — give the tile a dark pill so it reads on the light banner */
 .partner-logo--sabrewing {
   background: #1a1a2e;
@@ -125,8 +121,7 @@ html.is-inverted .partners-banner__title {
     max-height: 58px;
   }
 
-  .partner-logo--supermicro img,
-  .partner-logo--seeker img {
+  .partner-logo--supermicro img {
     max-height: 62px;
   }
 }
